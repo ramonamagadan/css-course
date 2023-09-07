@@ -51,9 +51,9 @@ body { /*deoarece proprietarile legate ded font sunt de obicei mostenite */
 
 .text-box {
     position:absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 40%; /* din elementul parinte */
+    left: 50%; /* din elementul parinte */
+    transform: translate(-50%, -50%); /*se refera la elementul in sine nu la parinte */
     text-align: center;
 }
 
@@ -61,7 +61,7 @@ body { /*deoarece proprietarile legate ded font sunt de obicei mostenite */
     color: #fff;
     text-transform: uppercase;
 
-    backface-visibility: hidden;
+    backface-visibility: hidden; /* determina daca partea din spate a elementului cand il transforma este vizibila sau ascunsa, elimina tremuratul din animatii */
     margin-bottom: 60px;
 }
 
@@ -71,12 +71,13 @@ body { /*deoarece proprietarile legate ded font sunt de obicei mostenite */
     font-weight: 400;
     letter-spacing: 35px;
 
-    animation-name: moveInLeft;
+    animation-name: moveInLeft; /*proprietati necesare ca animatia sa functioneze */
     animation-duration: 1s;
     animation-timing-function: ease-out;
 
 
-    /* animation-delay: 3s; */
+    /* animation-delay: 3s;
+    animation-iteration-count: 3; */
 }
 
 .heading-primary-sub {
@@ -100,7 +101,7 @@ body { /*deoarece proprietarile legate ded font sunt de obicei mostenite */
 
     100% {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateX(0); /* va arata in forma finala */
     }
     
 }
