@@ -72,8 +72,8 @@ body { /*deoarece proprietarile legate ded font sunt de obicei mostenite */
     color: #fff;
     text-transform: uppercase;
 
-    backface-visibility: hidden; /* determina daca partea din spate a elementului cand il transforma este vizibila sau ascunsa, elimina tremuratul din animatii */
-    margin-bottom: 6rem;
+    backface-visibility: hidden;
+    margin-bottom: 60px;
 }
 
 .heading-primary--main {
