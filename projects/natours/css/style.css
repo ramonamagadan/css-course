@@ -7,19 +7,30 @@ Dark green: #28b485
 
 */
 
-* { /*selector universal */
+*, /*selector universal */
+*::after,
+*::before { 
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* face ca margin si paddings sa nu fie adaugate la inaltimea si lungimea totala a chenarului */   
+    /* box-sizing: border-box; face ca margin si paddings sa nu fie adaugate la inaltimea si lungimea totala a chenarului    */
+    box-sizing: inherit; /* va mosteni automat orice am bune in box-sizing: border-box; in body */
+}
+
+
+html {
+    /* font-size:10px; acum asta este root font size deci 1rem= 10px */
+    font-size: 62.5%; /*.625*16=10 */
 }
 
 body { /*deoarece proprietarile legate ded font sunt de obicei mostenite */
     font-family: "Lato", sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    /* font-size: 16px; */
     line-height: 1.7;
     color: #777;
-    padding:30px;
+    padding:3rem;
+
+    box-sizing: border-box;
 }
 
 .header {
@@ -35,25 +46,25 @@ body { /*deoarece proprietarile legate ded font sunt de obicei mostenite */
     clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
 }
 
-.logo-box {
+.header__logo-box {
     position:absolute;
-    top:40px;
-    left: 40px;
+    top: 4rem;
+    left: 4rem;
 }
 
-.logo {
-    height: 35px;
+.header__logo {
+    height: 3.5rem;
 }
 
 /* .logo:hover {
     animation: moveInRight 1s ease-out;
 } */
 
-.text-box {
+.header__text-box {
     position:absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 40%; /* din elementul parinte */
+    left: 50%; /* din elementul parinte */
+    transform: translate(-50%, -50%); /*se refera la elementul in sine nu la parinte */
     text-align: center;
 }
 
@@ -61,29 +72,30 @@ body { /*deoarece proprietarile legate ded font sunt de obicei mostenite */
     color: #fff;
     text-transform: uppercase;
 
-    backface-visibility: hidden;
-    margin-bottom: 60px;
+    backface-visibility: hidden; /* determina daca partea din spate a elementului cand il transforma este vizibila sau ascunsa, elimina tremuratul din animatii */
+    margin-bottom: 6rem;
 }
 
-.heading-primary-main {
+.heading-primary--main {
     display: block;
-    font-size: 60px;
+    font-size: 6rem;
     font-weight: 400;
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
 
-    animation-name: moveInLeft;
+    animation-name: moveInLeft; /*proprietati necesare ca animatia sa functioneze */
     animation-duration: 1s;
     animation-timing-function: ease-out;
 
 
-    /* animation-delay: 3s; */
+    /* animation-delay: 3s;
+    animation-iteration-count: 3; */
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 17.4px;
+    letter-spacing: 1.74rem;
 
     animation: moveInRight 1s ease-out;
 }
@@ -91,16 +103,16 @@ body { /*deoarece proprietarile legate ded font sunt de obicei mostenite */
 @keyframes moveInLeft {
     0% {
         opacity: 0;
-        transform: translateX(-100px);
+        transform: translateX(-10rem);
     }
 
     80% {
-        transform: translateX(10px);
+        transform: translateX(1rem);
     }
 
     100% {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateX(0); /* va arata in forma finala */
     }
     
 }
@@ -108,11 +120,11 @@ body { /*deoarece proprietarile legate ded font sunt de obicei mostenite */
 @keyframes moveInRight {
     0% {
         opacity: 0;
-        transform: translateX(100px);
+        transform: translateX(10remx);
     }
 
     80% {
-        transform: translateX(-10px);
+        transform: translateX(-1rem);
     }
 
     100% {
@@ -125,7 +137,7 @@ body { /*deoarece proprietarile legate ded font sunt de obicei mostenite */
 @keyframes moveInBottom {
     0% {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(3rem);
     }
 
     100% {
@@ -139,24 +151,25 @@ body { /*deoarece proprietarile legate ded font sunt de obicei mostenite */
 .btn:visited { /*:link provine de la pseudo-clasa, care e o stare speciala a selectorului , se foloseste pentru <a> si functioneaza ca un link*/
     text-transform: uppercase;
     text-decoration: none;
-    padding: 15px 40px;
-    display: inline-block; /*intotdeauna daca dorin hight, width */
-    border-radius: 100px;
+    padding: 1.5rem 4rem;
+    display: inline-block; /*intotdeauna daca dorim hight, width */
+    border-radius: 10rem;
     transition: all .2s;
     position: relative; /*ca sa putem ascunde ::after */
+    font-size: 1.6rem;
 }
 
 .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0,0,0,.2);
+    transform: translateY(-0.3rem);
+    box-shadow: 0 1rem 2remx rgba(0,0,0,.2);
 }
 
 .btn:active{
-    transform: translateY(-1px);
-    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    transform: translateY(-0.1rem);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.2);
 }
 
-.btn-white {
+.btn--white {
     background-color: #fff;
     color: #777;
 }
@@ -166,7 +179,7 @@ body { /*deoarece proprietarile legate ded font sunt de obicei mostenite */
     display: inline-block;
     height: 100%;
     width: 100%;
-    border-radius: 100px;
+    border-radius: 10rem;
     position: absolute;
     top: 0;
     left: 0;
@@ -175,7 +188,7 @@ body { /*deoarece proprietarile legate ded font sunt de obicei mostenite */
     
 }
 
-.btn-white::after {
+.btn--white::after {
     background-color: #fff;
 }
 
@@ -184,7 +197,7 @@ body { /*deoarece proprietarile legate ded font sunt de obicei mostenite */
     opacity: 0;
 }
 
-.btn-animated {
+.btn--animated {
     animation: moveInBottom .5s ease-out .75s;
     animation-fill-mode: backwards;
     
