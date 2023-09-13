@@ -1,0 +1,34 @@
+.header {
+    height: 95vh; /* in orice punct, inaltimea acetei casete a acestui element ar trebui sa fie 95% din inaltimea ferestrei de visualizare */
+    background-image: linear-gradient(
+        to right bottom, 
+       rgba($color-primary-light, 0.8), 
+       rgba($color-primary-dark, 0.8)), 
+       url(../img/hero.jpg);
+    background-size: cover; /*indiferent de latimea ferestrei sau a elementului, va incerca intotdeauna sa se potriveasca elementului din interiorul chenarului */
+    background-position: top;
+    
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+
+    &__logo-box {
+        position:absolute;
+        top: 4rem;
+        left: 4rem;
+    }
+
+    &__logo {
+        height: 3.5rem;
+    }
+    
+    /* .logo:hover {
+        animation: moveInRight 1s ease-out;
+    } */
+    
+    &__text-box {
+        position:absolute;
+        top: 40%; /* din elementul parinte */
+        left: 50%; /* din elementul parinte */
+        transform: translate(-50%, -50%); /*se refera la elementul in sine nu la parinte */
+        text-align: center;
+    }
+}

@@ -6,199 +6,186 @@ Medium green: #55c57a
 Dark green: #28b485
 
 */
-
-*, /*selector universal */
+*,
 *::after,
-*::before { 
-    margin: 0;
-    padding: 0;
-    /* box-sizing: border-box; face ca margin si paddings sa nu fie adaugate la inaltimea si lungimea totala a chenarului    */
-    box-sizing: inherit; /* va mosteni automat orice am bune in box-sizing: border-box; in body */
-}
-
+*::before {
+  margin: 0;
+  padding: 0;
+  /* box-sizing: border-box; face ca margin si paddings sa nu fie adaugate la inaltimea si lungimea totala a chenarului    */
+  box-sizing: inherit;
+  /* va mosteni automat orice am bune in box-sizing: border-box; in body */ }
 
 html {
-    /* font-size:10px; acum asta este root font size deci 1rem= 10px */
-    font-size: 62.5%; /*.625*16=10 */
-}
+  /* font-size:10px; acum asta este root font size deci 1rem= 10px */
+  font-size: 62.5%;
+  /*.625*16=10 */ }
 
-body { /*deoarece proprietarile legate ded font sunt de obicei mostenite */
-    font-family: "Lato", sans-serif;
-    font-weight: 400;
-    /* font-size: 16px; */
-    line-height: 1.7;
-    color: #777;
-    padding:3rem;
+body {
+  /*deoarece proprietarile legate ded font sunt de obicei mostenite */
+  box-sizing: border-box; }
 
-    box-sizing: border-box;
-}
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem); }
+  80% {
+    transform: translateX(1rem); }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    /* va arata in forma finala */ } }
 
-.header {
-    height: 95vh; /* in orice punct, inaltimea acetei casete a acestui element ar trebui sa fie 95% din inaltimea ferestrei de visualizare */
-    background-image: linear-gradient(
-        to right bottom, 
-       rgba(40, 180, 133, 0.801), 
-       rgba(40, 180, 133, 0.801)), 
-       url(../img/hero.jpg);
-    background-size: cover; /*indiferent de latimea ferestrei sau a elementului, va incerca intotdeauna sa se potriveasca elementului din interiorul chenarului */
-    background-position: top;
-    
-    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
-}
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10remx); }
+  80% {
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translateX(0); } }
 
-.header__logo-box {
-    position:absolute;
-    top: 4rem;
-    left: 4rem;
-}
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem); }
+  100% {
+    opacity: 1;
+    transform: translateX(0); } }
 
-.header__logo {
-    height: 3.5rem;
-}
-
-/* .logo:hover {
-    animation: moveInRight 1s ease-out;
-} */
-
-.header__text-box {
-    position:absolute;
-    top: 40%; /* din elementul parinte */
-    left: 50%; /* din elementul parinte */
-    transform: translate(-50%, -50%); /*se refera la elementul in sine nu la parinte */
-    text-align: center;
-}
+body {
+  /*deoarece proprietarile legate ded font sunt de obicei mostenite */
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem; }
 
 .heading-primary {
-    color: #fff;
-    text-transform: uppercase;
-
-    backface-visibility: hidden;
-    margin-bottom: 60px;
-}
-
-.heading-primary--main {
+  color: #fff;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  margin-bottom: 60px; }
+  .heading-primary--main {
     display: block;
     font-size: 6rem;
     font-weight: 400;
     letter-spacing: 3.5rem;
-
-    animation-name: moveInLeft; /*proprietati necesare ca animatia sa functioneze */
+    animation-name: moveInLeft;
+    /*proprietati necesare ca animatia sa functioneze */
     animation-duration: 1s;
     animation-timing-function: ease-out;
-
-
     /* animation-delay: 3s;
-    animation-iteration-count: 3; */
-}
-
-.heading-primary--sub {
+        animation-iteration-count: 3; */ }
+  .heading-primary--sub {
     display: block;
     font-size: 2rem;
     font-weight: 700;
     letter-spacing: 1.74rem;
+    animation: moveInRight 1s ease-out; }
 
-    animation: moveInRight 1s ease-out;
-}
-
-@keyframes moveInLeft {
-    0% {
-        opacity: 0;
-        transform: translateX(-10rem);
-    }
-
-    80% {
-        transform: translateX(1rem);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateX(0); /* va arata in forma finala */
-    }
-    
-}
-
-@keyframes moveInRight {
-    0% {
-        opacity: 0;
-        transform: translateX(10remx);
-    }
-
-    80% {
-        transform: translateX(-1rem);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-    
-}
-
-@keyframes moveInBottom {
-    0% {
-        opacity: 0;
-        transform: translateY(3rem);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-    
-}
-
-.btn:link,
-.btn:visited { /*:link provine de la pseudo-clasa, care e o stare speciala a selectorului , se foloseste pentru <a> si functioneaza ca un link*/
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1.5rem 4rem;
-    display: inline-block; /*intotdeauna daca dorim hight, width */
-    border-radius: 10rem;
-    transition: all .2s;
-    position: relative; /*ca sa putem ascunde ::after */
-    font-size: 1.6rem;
-}
+.btn:link, .btn:visited {
+  /*:link provine de la pseudo-clasa, care e o stare speciala a selectorului , se foloseste pentru <a> si functioneaza ca un link*/
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  /*intotdeauna daca dorim hight, width */
+  border-radius: 10rem;
+  transition: all .2s;
+  position: relative;
+  /*ca sa putem ascunde ::after */
+  font-size: 1.6rem; }
 
 .btn:hover {
-    transform: translateY(-0.3rem);
-    box-shadow: 0 1rem 2remx rgba(0,0,0,.2);
-}
+  transform: translateY(-0.3rem);
+  box-shadow: 0 1rem 2remx rgba(0, 0, 0, 0.2); }
+  .btn:hover::after {
+    /*after pseudo element doar cand avem hover pe buton */
+    transform: scaleX(1.4) scaleY(1.6);
+    /*mareste elementul */
+    opacity: 0; }
 
-.btn:active{
-    transform: translateY(-0.1rem);
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.2);
-}
+.btn:active {
+  transform: translateY(-0.1rem);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
 
 .btn--white {
-    background-color: #fff;
-    color: #777;
-}
+  background-color: #fff;
+  color: #777; }
+  .btn--white::after {
+    background-color: #fff; }
 
-.btn::after { /*element care arata ca butonul dar apare dupa el */
-    content:""; /*trebuie avisat continutul chiar daca e gol pentru ca butonul sa apara */
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    border-radius: 10rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: all .4s;
-    
-}
-
-.btn--white::after {
-    background-color: #fff;
-}
-
-.btn:hover::after { /*after pseudo element doar cand avem hover pe buton */
-    transform: scaleX(1.4) scaleY(1.6);/*mareste elementul */
-    opacity: 0;
-}
+.btn::after {
+  /*element care arata ca butonul dar apare dupa el */
+  content: "";
+  /*trebuie avisat continutul chiar daca e gol pentru ca butonul sa apara */
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all .4s; }
 
 .btn--animated {
-    animation: moveInBottom .5s ease-out .75s;
-    animation-fill-mode: backwards;
-    
-}
+  animation: moveInBottom .5s ease-out .75s;
+  animation-fill-mode: backwards; }
+
+.header {
+  height: 95vh;
+  /* in orice punct, inaltimea acetei casete a acestui element ar trebui sa fie 95% din inaltimea ferestrei de visualizare */
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-size: cover;
+  /*indiferent de latimea ferestrei sau a elementului, va incerca intotdeauna sa se potriveasca elementului din interiorul chenarului */
+  background-position: top;
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+  /* .logo:hover {
+        animation: moveInRight 1s ease-out;
+    } */ }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    /* din elementul parinte */
+    left: 50%;
+    /* din elementul parinte */
+    transform: translate(-50%, -50%);
+    /*se refera la elementul in sine nu la parinte */
+    text-align: center; }
+
+.row {
+  max-width: 114rem;
+  background-color: #eee;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    background-color: orangered;
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-of-2 {
+    width: calc((100% - 6rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 6rem) / 3); }
+  .row .col-2-of-3 {
+    width: calc( 2 * ((100% - 2 * 6rem) / 3) + 6rem); }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * 6rem) / 4); }
+  .row .col-2-of-4 {
+    width: calc( 2 * ((100% - 3 * 6rem) / 4) + 6rem); }
+  .row .col-3-of-4 {
+    width: calc( 3 * ((100% - 3 * 6rem) / 4) + ( 2 * 6rem)); }
