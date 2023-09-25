@@ -35,6 +35,16 @@
         }
         
     }
+
+    &--green {
+        background-color: $color-primary;
+        color: $color-white;
+
+        &::after {
+            background-color: $color-primary;
+        }
+        
+    }
     
     &::after { /*element care arata ca butonul dar apare dupa el */
         content:""; /*trebuie avisat continutul chiar daca e gol pentru ca butonul sa apara */
