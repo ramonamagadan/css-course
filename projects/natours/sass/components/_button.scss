@@ -1,4 +1,5 @@
 .btn {
+    &,
     &:link,
     &:visited { /*:link provine de la pseudo-clasa, care e o stare speciala a selectorului , se foloseste pentru <a> si functioneaza ca un link*/
         text-transform: uppercase;
@@ -9,6 +10,10 @@
         transition: all .2s;
         position: relative; /*ca sa putem ascunde ::after */
         font-size: $default-font-size;
+
+        //change for the <button> element
+        border: none;
+        cursor: pointer;
     }
     
     &:hover {
@@ -21,7 +26,8 @@
         }
     }
     
-    &:active{
+    &:active,
+    &:focus{
         transform: translateY(-0.1rem);
         box-shadow: 0 .5rem 1rem rgba($color-black,.2);
     }
