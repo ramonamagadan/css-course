@@ -1,5 +1,5 @@
 .header {
-    height: 95vh; /* in orice punct, inaltimea acetei casete a acestui element ar trebui sa fie 95% din inaltimea ferestrei de visualizare */
+    height: 85vh; /* in orice punct, inaltimea acetei casete a acestui element ar trebui sa fie 85% din inaltimea ferestrei de visualizare */
     background-image: linear-gradient(
        to right bottom, 
        rgba($color-primary-light, 0.8), 
@@ -7,11 +7,18 @@
        url(../img/hero-small.jpg);
     background-size: cover; /*indiferent de latimea ferestrei sau a elementului, va incerca intotdeauna sa se potriveasca elementului din interiorul chenarului */
     background-position: top;
+    position: relative;
 
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
-    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
 
-    @media(min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em)  { 
+    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+        height: 95vh;
+    }
+
+    @media(min-resolution: 192dpi) and (min-width: 37.5em),
+        (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), //pentru a functiona in safari
+        (min-width: 125em)  { 
         // dpi=puncte pe inch
         background-image: linear-gradient(
             to right bottom,
