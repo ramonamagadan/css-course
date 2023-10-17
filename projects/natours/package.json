@@ -5,14 +5,21 @@
   "main": "index.js",
   "scripts": {
     "watch:sass": "node-sass sass/main.scss css/style.css -w",
+    "devserver": "live-server",
+    "start": "npm-run-all --parallel devserver watch:sass",
     "compile:sass": "node-sass sass/main.scss css/style.comp.css",
-    "concat:sass": ""
+    "concat:sass": "concat -o css/style.concat.css css/icon-font.css css/style.comp.css",
+    "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' css/style.concat.css -o css/style.prefix.css",
+    "compress:css": "node-sass css/style.prefix.css css/style.css --output-style compressed",
+    "build:css": "npm-run-all compile:sass concat:sass prefix:css compress:css"
   },
   "author": "Ramona",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^10.4.16",
     "concat": "^1.0.3",
-    "node-sass": "^9.0.0"
+    "node-sass": "^9.0.0",
+    "postcss-cli": "^10.1.0"
   },
   "dependencies": {
     "abbrev": "^1.1.1",
@@ -114,6 +121,7 @@
     "node-gyp": "^8.4.1",
     "nopt": "^5.0.0",
     "normalize-package-data": "^3.0.3",
+    "npm-run-all": "^4.1.5",
     "npmlog": "^6.0.2",
     "once": "^1.4.0",
     "p-limit": "^2.3.0",

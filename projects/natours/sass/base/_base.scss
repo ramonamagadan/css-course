@@ -38,3 +38,8 @@ body { /*deoarece proprietarile legate ded font sunt de obicei mostenite */
         padding: 0;
     }
 }
+
+::selection {
+    background-color: $color-primary;
+    color: $color-white;
+}
